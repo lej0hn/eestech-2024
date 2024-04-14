@@ -6,7 +6,7 @@ client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
 
 def get_llm_response(user_input):
     # This is a simplified example where the system's role does not change dynamically
-    system_content = "Always answer as a chef. Your answer should be 50 words max."
+    # system_content = "Always answer as a chef. Your answer should be 50 words max."
     
     db_input = chroma_file2.database_function(user_input)
 
@@ -14,7 +14,7 @@ def get_llm_response(user_input):
     completion = client.chat.completions.create(
         model="TheBloke/Mistral-7B-Instruct-v0.2-GGUF",
         messages=[
-            {"role": "system", "content": "Give an answer of max 150 words. Act as a chef. Use this recipe to answer the question" + " " + str(db_input).replace("\n", "")},
+            {"role": "system", "content": "Give an answer of max 50 words. Act as a chef. Use this to answer the question" + " " + str(db_input).replace("\n", "")},
             {"role": "user", "content": user_input}
         ],
         temperature=0.2,

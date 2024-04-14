@@ -10,5 +10,6 @@ def database_function(input):
         query_texts=input,
         n_results=1
     )
-
+    
+    print(results)
     return results['documents'][0][0]
