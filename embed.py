@@ -1,25 +1,20 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import BertModel, BertTokenizer
+import torch
 
-# Correct class for tokenizer
-tokenizer = AutoTokenizer.from_pretrained("TheBloke/Mistral-7B-Instruct-v0.2-GGUF")
-
-# Correct class for model
-model = AutoModelForCausalLM.from_pretrained("TheBloke/Mistral-7B-Instruct-v0.2-GGUF")
-
+# Load the model and tokenizer
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertModel.from_pretrained('bert-base-uncased')
 
 # Function to generate an embedding for a query
 def generate_embedding(query):
     # Tokenize the query
     inputs = tokenizer(query, return_tensors="pt", padding=True, truncation=True)
-    # Get the model's output
+    # Get the model's output (you may need to specify the output you want depending on the model)
     with torch.no_grad():
         outputs = model(**inputs)
     
-    # You may choose to use the last hidden states or another layer
-    hidden_states = outputs.last_hidden_state
-
-    # Aggregate the hidden states to get a single vector (e.g., mean pooling)
-    embeddings = hidden_states.mean(dim=1)
+    # Extract embeddings, typically by averaging the last hidden states across the token dimension
+    embeddings = outputs.last_hidden_state.mean(dim=1)
     return embeddings
 
 # Example use
