@@ -1,14 +1,14 @@
 import chromadb
-from text_chunk import recipes_to_return
+from final import text_chunk
 
 
-client = chromadb.PersistentClient(path="C:/Users/jdara/Desktop/eestec_2024/db_chroma")
+client = chromadb.PersistentClient(path="C:/Users/User/OneDrive/Υπολογιστής/eestech-2024/chromadb")
 
 collection = client.create_collection(name="Recipes")
 
 
 
-recipes = recipes_to_return()
+recipes = text_chunk.recipes_to_return()
 documents = []
 metadatas = []
 ids = []
@@ -24,8 +24,11 @@ collection.add(
     ids = ids
 )
 
-results = collection.query(
-    query_texts=[" Eggs,  castor  sugar,  Marsala,  cinnamon,  lemon,  stick "],
-    n_results=10
-)
+# results = collection.query(
+#     query_texts=[" Eggs,  castor  sugar,  Marsala,  cinnamon,  lemon,  stick "],
+#     n_results=10
+# )
+
+
+
 

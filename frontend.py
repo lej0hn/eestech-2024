@@ -60,7 +60,7 @@ st.markdown(
         margin-left: 0.5rem;
     }
     .stSidebar > div:first-child {
-        width: 300px;
+        width: 250px;
     }
     </style>
     """,
@@ -77,7 +77,7 @@ def response_generator(temp2):
     response = temp2
     for word in response.split():
         yield word + " "
-        time.sleep(0.05)
+        time.sleep(0.1)
 
 
 st.title("👩‍🍳 Chef AI")

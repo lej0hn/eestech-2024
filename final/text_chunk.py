@@ -27,7 +27,7 @@ def split_recipes(file_path):
 
 def recipes_to_return():
     # Path to the text file containing recipes
-    file_path = "C:/Users/jdara/Desktop/eestec_2024/CookItalian_obooko.txt"  # Update this with the actual file path
+    file_path = "C:/Users/User/OneDrive/Υπολογιστής/eestech-2024/CookItalian_obooko.txt"  # Update this with the actual file path
 
     # Split recipes from the file
     recipes = split_recipes(file_path)
